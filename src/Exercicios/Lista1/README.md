@@ -33,7 +33,7 @@ Na raiz do repositório:
 
 ### Windows com MSYS2/MinGW
 
-```powershell
+```bash
 cmake -S . -B build -G "MinGW Makefiles"
 cmake --build build
 ```
