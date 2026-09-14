@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(PG_Lista01 LANGUAGES C CXX)
+project(PG_Fundamentos LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -16,6 +16,13 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(glfw)
 
+FetchContent_Declare(
+    glm
+    GIT_REPOSITORY https://github.com/g-truc/glm.git
+    GIT_TAG 1.0.1
+)
+FetchContent_MakeAvailable(glm)
+
 find_package(OpenGL REQUIRED)
 
 add_library(pg_common STATIC
@@ -26,7 +33,7 @@ target_include_directories(pg_common PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${CMAKE_CURRENT_SOURCE_DIR}/Common
 )
-target_link_libraries(pg_common PUBLIC glfw OpenGL::GL)
+target_link_libraries(pg_common PUBLIC glfw OpenGL::GL glm::glm)
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     target_compile_options(pg_common PRIVATE
@@ -46,3 +53,10 @@ add_pg_exercise(Lista1_Ex1 src/Exercicios/Lista1/Ex1/main.cpp)
 add_pg_exercise(Lista1_Ex2 src/Exercicios/Lista1/Ex2/main.cpp)
 add_pg_exercise(Lista1_Ex3 src/Exercicios/Lista1/Ex3/main.cpp)
 add_pg_exercise(Lista1_Ex4 src/Exercicios/Lista1/Ex4/main.cpp)
+
+add_pg_exercise(Lista2_Ex1 src/Exercicios/Lista2/Ex1/main.cpp)
+add_pg_exercise(Lista2_Ex2 src/Exercicios/Lista2/Ex2/main.cpp)
+add_pg_exercise(Lista2_Ex3 src/Exercicios/Lista2/Ex3/main.cpp)
+add_pg_exercise(Lista2_Ex4 src/Exercicios/Lista2/Ex4/main.cpp)
+add_pg_exercise(Lista2_Ex5 src/Exercicios/Lista2/Ex5/main.cpp)
+add_pg_exercise(Lista2_Ex6 src/Exercicios/Lista2/Ex6/main.cpp)

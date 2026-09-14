@@ -9,17 +9,15 @@ Repositório com os exercícios desenvolvidos para a Atividade Acadêmica **Proc
 | Projeto | Engine / Linguagem | Descrição breve |
 | --- | --- | --- |
 | [Lista 1](src/Exercicios/Lista1/README.md) | C++ / OpenGL | Primitivas gráficas, shaders, buffers e geração de geometria 2D |
+| [Lista 2](src/Exercicios/Lista2/README.md) | C++ / OpenGL | Projeção ortográfica, viewport e entrada do mouse |
 
 ```text
-Lista01/
+PG-INTRO/
 ├── Common/                         # GLAD e funções OpenGL compartilhadas
 ├── include/glad/                   # Cabeçalhos da GLAD
-├── src/Exercicios/Lista1/
-│   ├── Ex1/                        # Dois triângulos e modos de desenho
-│   ├── Ex2/                        # Formas geradas com seno e cosseno
-│   ├── Ex3/                        # Posição e cor por vértice
-│   ├── Ex4/                        # Coração em pixel art
-│   └── README.md                   # Documentação da lista
+├── src/Exercicios/
+│   ├── Lista1/                     # Quatro exercícios da primeira lista
+│   └── Lista2/                     # Seis exercícios da segunda lista
 ├── CMakeLists.txt
 └── README.md
 ```
@@ -30,6 +28,7 @@ Lista01/
 - OpenGL 3.3 Core
 - GLFW 3.4
 - GLAD
+- GLM 1.0.1
 - CMake 3.14 ou superior
 
 ## Compilação

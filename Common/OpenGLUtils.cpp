@@ -12,6 +12,11 @@ void framebufferSizeCallback(GLFWwindow *, int width, int height)
     glViewport((width - side) / 2, (height - side) / 2, side, side);
 }
 
+void fullFramebufferSizeCallback(GLFWwindow *, int width, int height)
+{
+    glViewport(0, 0, width, height);
+}
+
 bool checkShader(GLuint shader, const char *name)
 {
     GLint success = GL_FALSE;
@@ -26,7 +31,7 @@ bool checkShader(GLuint shader, const char *name)
 }
 }
 
-GLFWwindow *createWindow(const char *title, int width, int height)
+GLFWwindow *createWindow(const char *title, int width, int height, bool squareViewport)
 {
     if (glfwInit() != GLFW_TRUE)
     {
@@ -60,11 +65,14 @@ GLFWwindow *createWindow(const char *title, int width, int height)
         return nullptr;
     }
 
-    glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
+    GLFWframebuffersizefun viewportCallback = squareViewport
+        ? framebufferSizeCallback
+        : fullFramebufferSizeCallback;
+    glfwSetFramebufferSizeCallback(window, viewportCallback);
     int framebufferWidth = 0;
     int framebufferHeight = 0;
     glfwGetFramebufferSize(window, &framebufferWidth, &framebufferHeight);
-    framebufferSizeCallback(window, framebufferWidth, framebufferHeight);
+    viewportCallback(window, framebufferWidth, framebufferHeight);
 
     std::cout << "GPU: " << glGetString(GL_RENDERER) << '\n';
     std::cout << "OpenGL: " << glGetString(GL_VERSION) << '\n';

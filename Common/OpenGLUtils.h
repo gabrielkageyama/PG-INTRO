@@ -4,7 +4,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-GLFWwindow *createWindow(const char *title, int width = 800, int height = 600);
+GLFWwindow *createWindow(const char *title, int width = 800, int height = 600,
+                         bool squareViewport = true);
 GLuint createShaderProgram(const char *vertexSource, const char *fragmentSource);
 void processEscapeKey(GLFWwindow *window);
 
