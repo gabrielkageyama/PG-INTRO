@@ -60,3 +60,17 @@ add_pg_exercise(Lista2_Ex3 src/Exercicios/Lista2/Ex3/main.cpp)
 add_pg_exercise(Lista2_Ex4 src/Exercicios/Lista2/Ex4/main.cpp)
 add_pg_exercise(Lista2_Ex5 src/Exercicios/Lista2/Ex5/main.cpp)
 add_pg_exercise(Lista2_Ex6 src/Exercicios/Lista2/Ex6/main.cpp)
+
+# O jogo e uma entrega independente: outro processo CMake, cache e dependencias.
+# Este alvo apenas permite compilar todas as entregas a partir da raiz.
+include(ExternalProject)
+ExternalProject_Add(TrabalhoGrauA
+    SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/Trabalhos/TrabalhoGrauA
+    BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/trabalho-grau-a
+    CMAKE_ARGS
+        -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
+        -DCMAKE_C_COMPILER:FILEPATH=${CMAKE_C_COMPILER}
+        -DCMAKE_CXX_COMPILER:FILEPATH=${CMAKE_CXX_COMPILER}
+    INSTALL_COMMAND ""
+    BUILD_ALWAYS TRUE
+)

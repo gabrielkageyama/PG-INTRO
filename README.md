@@ -10,6 +10,7 @@ Repositório com os exercícios desenvolvidos para a Atividade Acadêmica **Proc
 | --- | --- | --- |
 | [Lista 1](src/Exercicios/Lista1/README.md) | C++ / OpenGL | Primitivas gráficas, shaders, buffers e geração de geometria 2D |
 | [Lista 2](src/Exercicios/Lista2/README.md) | C++ / OpenGL | Projeção ortográfica, viewport e entrada do mouse |
+| [Trabalho Grau A](src/Trabalhos/TrabalhoGrauA/README.md) | C++ / OpenGL | Endless runner medieval — combate, loja, HUD, pausa e áudio |
 
 ```text
 PG-INTRO/
@@ -18,6 +19,8 @@ PG-INTRO/
 ├── src/Exercicios/
 │   ├── Lista1/                     # Quatro exercícios da primeira lista
 │   └── Lista2/                     # Seis exercícios da segunda lista
+├── src/Trabalhos/TrabalhoGrauA/     # Jogo com renderer, CMake e dependências próprios
+├── assets/TrabalhoGrauA/            # Texturas, áudio, configuração e licenças do jogo
 ├── CMakeLists.txt
 └── README.md
 ```
@@ -50,6 +53,19 @@ cmake --build build
 ```
 
 Os executáveis gerados podem ser encontrados no diretório `build`, criado durante a configuração.
+
+O Trabalho Grau A tem CMake, dependências e build próprios, sem compartilhar
+bibliotecas com os exercícios. O build da raiz apenas aciona esse projeto separado,
+gerando `build/trabalho-grau-a/TrabalhoGrauA`. Para compilar somente o jogo:
+
+```bash
+cmake -S src/Trabalhos/TrabalhoGrauA -B build-grau-a -G "MinGW Makefiles"
+cmake --build build-grau-a
+./build-grau-a/TrabalhoGrauA.exe
+```
+
+No Linux/macOS, omita o gerador MinGW e a extensão `.exe`. Consulte o README do
+trabalho para os requisitos e a organização da entrega independente.
 
 ### Se o comando `cmake` não for reconhecido
 
